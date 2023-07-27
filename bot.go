@@ -4,6 +4,8 @@ import (
 	"log"
 
 	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api/v5"
+
+	"fmt"
 )
 
 func main() {
@@ -24,6 +26,10 @@ func main() {
 			var msg = tgbotapi.NewMessage(update.Message.Chat.ID, "")
 			msg.Text = "Binance"
 			bot.Send(msg);
+		} else {
+			if update.Message != nil {
+				fmt.Print(update.Message.Text)
+			}
 		}
 	}
 }
