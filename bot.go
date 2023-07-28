@@ -26,6 +26,9 @@ func main() {
 	for update := range updates {
 		if update.Message.IsCommand() {
 			println(update.Message.Text);
+			var message = tgbotapi.NewMessage(update.Message.Chat.ID, "");
+			message.Text = "Отправьте через пробел логин и пароль от Binance";
+			bot.Send(message);
 		} else {
 			if update.Message != nil {
 				var resp, err = http.Get("http://example.com/")
