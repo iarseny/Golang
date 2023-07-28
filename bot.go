@@ -2,6 +2,7 @@ package main
 
 import (
 	"log"
+	"strings"
 
 	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api/v5"
 
@@ -31,6 +32,8 @@ func main() {
 			bot.Send(message);
 		} else {
 			if update.Message != nil {
+				var text = strings.Split(update.Message.Text, " ");
+				println(len(text));
 				var resp, err = http.Get("http://example.com/")
 				fmt.Println(resp, err);
 				fmt.Print(update.Message.Text)
