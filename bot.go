@@ -6,6 +6,8 @@ import (
 	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api/v5"
 
 	"fmt"
+
+	"net/http"
 )
 
 func main() {
@@ -23,11 +25,11 @@ func main() {
 
 	for update := range updates {
 		if update.Message.IsCommand() {
-			var msg = tgbotapi.NewMessage(update.Message.Chat.ID, "")
-			msg.Text = "Binance"
-			bot.Send(msg);
+			println(update.Message.Text);
 		} else {
 			if update.Message != nil {
+				var resp, err = http.Get("http://example.com/")
+				fmt.Println(resp, err);
 				fmt.Print(update.Message.Text)
 			}
 		}
